@@ -32,4 +32,4 @@ jobs:
           grep -qi '<html' Task.html
           grep -qi '</html>' Task.html
 
-          echo "HTML structure check passed"
+          echo "HTML structure check  passed" 
