@@ -1,0 +1,35 @@
+name: Cardtask CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  code-quality:
+    name: HTML Quality Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check HTML File Exists
+        run: |
+          test -f Task.html
+          echo "Task.html exists"
+
+      - name: Check HTML Document Structure
+        run: |
+          grep -qi '<!DOCTYPE html>' Task.html
+          grep -qi '<html' Task.html
+          grep -qi '</html>' Task.html
+
+          echo "HTML structure check passed"
